@@ -10,7 +10,7 @@ WORKDIR /fusion-collector/bin/
 ADD ./telegraf .
 
 WORKDIR /fusion-collector
-ADD ./sidecar_template.yml .
+ADD sidecar_template.yml .
 
 ADD entrypoint.sh .
 RUN chmod -Rf 777 ./entrypoint.sh
