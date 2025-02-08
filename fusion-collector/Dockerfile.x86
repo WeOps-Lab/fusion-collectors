@@ -1,0 +1,19 @@
+FROM ubuntu:22.04
+
+WORKDIR /opt/fusion-collectors
+
+RUN apt-get update && \
+    apt-get install -y ca-certificates && \
+    update-ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+    
+ADD ./linux-arm64/bin bin
+ADD ./linux-arm64/cache cache
+ADD ./linux-arm64/generated generated
+ADD ./linux-arm64/log log
+ADD ./linux-arm64/collector-sidecar collector-sidecar
+ADD ./scripts scripts
+ADD ./startup.sh startup.sh
+RUN chmod -Rf 777 /opt/fusion-collectors
+
+ENTRYPOINT [ "/opt/fusion-collectors/startup.sh" ]

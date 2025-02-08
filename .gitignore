@@ -4,3 +4,5 @@ node_modules/
 dist/
 vendor/
 .venv/
+fusion-collector/*/bin/*
+fusion-collector/*/collector-sidecar
