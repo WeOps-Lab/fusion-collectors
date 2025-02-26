@@ -1,4 +1,5 @@
-FROM ubuntu:22.04
+FROM telegraf:1.33.3
+
 
 # 添加构建参数
 ARG VERSION=latest
@@ -16,7 +17,7 @@ LABEL org.label-schema.version="${VERSION}" \
 WORKDIR /opt/fusion-collectors
 
 RUN apt-get update && \
-    apt-get install -y ca-certificates && \
+    apt-get install -y ca-certificates ipmitool vim&& \
     update-ca-certificates && \
     rm -rf /var/lib/apt/lists/*
     
