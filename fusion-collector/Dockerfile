@@ -1,6 +1,5 @@
 FROM telegraf:1.33.3
 
-
 # 添加构建参数
 ARG VERSION=latest
 ARG BUILD_DATE
@@ -28,6 +27,9 @@ ADD ./${ARCH}/log log
 ADD ./${ARCH}/collector-sidecar collector-sidecar
 ADD ./scripts scripts
 ADD ./startup.sh startup.sh
+
+ADD ./support-files/mibs /usr/share/snmp/mibs
+
 RUN chmod -Rf 777 /opt/fusion-collectors
 
 ENTRYPOINT [ "/opt/fusion-collectors/startup.sh" ]
