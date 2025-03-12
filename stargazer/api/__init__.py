@@ -1,4 +1,8 @@
 from sanic import Blueprint
-from api.example import example_router
 
-api = Blueprint.group(example_router, url_prefix="/api")
+from stargazer.api.example import example_router
+from stargazer.api.monitor import monitor_router
+
+BLUEPRINTS = [monitor_router, example_router]
+
+api = Blueprint.group(*BLUEPRINTS, url_prefix="/api")
