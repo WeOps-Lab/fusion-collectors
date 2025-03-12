@@ -8,6 +8,7 @@
 # @Author: windyzhao
 
 import importlib
+from sanic.log import logger
 
 
 class CollectService(object):
@@ -27,5 +28,5 @@ class CollectService(object):
             result = plugin_instance.list_all_resources()
             return result
         except Exception as e:
-            print(f"Error loading plugin {self.plugin_name}: {e}")
+            logger.info(f"Error loading plugin {self.plugin_name}: {e}")
             return ""

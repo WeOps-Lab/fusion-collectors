@@ -155,8 +155,6 @@ class VmwareManage(object):
                                 vm_dict["ip_addr"] = _vmnet["ipv6"][0]
                                 break
 
-                    print(f"net_dict= {net_dict}")
-
                 if vm.summary.runtime.host:
                     vm_dict["vmware_esxi"] = vm.summary.runtime.host._moId
                     if isinstance(vm.summary.runtime.host.parent, vim.ClusterComputeResource):
@@ -168,8 +166,6 @@ class VmwareManage(object):
                 vm_dict["vcpus"] = vm.summary.config.numCpu
                 vm_dict["os_name"] = vm.summary.config.guestFullName
                 vm_dict["memory"] = vm.summary.config.memorySizeMB
-
-                print(f"vm_dict= {vm_dict}")
 
                 result.append(vm_dict)
 
@@ -246,11 +242,11 @@ class VmwareManage(object):
         except:
             pass
 
-        lines = self.convert_to_prometheus_format(result)
+        lines = self.convert_to_influxdb_format(result)
         return lines
 
     @staticmethod
-    def convert_to_prometheus_format(data):
+    def convert_to_influxdb_format(data):
         lines = []
         timestamp = int(time.time() * 1e9)  # 当前时间戳，单位为纳秒
 
@@ -275,11 +271,11 @@ class VmwareManage(object):
 if __name__ == '__main__':
     params = {
         # "hostname": "10.10.16.254",
-        "hostname": "10.10.16.254",
-        "username": "weops-monitor@vsphere.local",
-        "password": "cWweops-monitor@2022",
-        "port": 443,
-        "ssl": False,
+        # "hostname": "10.10.16.254",
+        # "username": "weops-monitor@vsphere.local",
+        # "password": "cWweops-monitor@2022",
+        # "port": 443,
+        # "ssl": False,
     }
     vm_manage = VmwareManage(params=params)
     result = vm_manage.list_all_resources()
