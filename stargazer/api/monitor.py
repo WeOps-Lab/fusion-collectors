@@ -46,7 +46,7 @@ async def metrics(request):
     )
 
     end_time = datetime.datetime.now()
-    start_time = end_time - datetime.timedelta(minutes=minutes)
+    start_time = end_time - datetime.timedelta(minutes=int(minutes))
     start_time_str = start_time.strftime("%Y-%m-%d %H:%M") + ":00"
     end_time_str = end_time.strftime("%Y-%m-%d %H:%M") + ":00"
 
