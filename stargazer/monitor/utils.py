@@ -28,4 +28,4 @@ def convert_to_influxdb(data):
                     influxdb_line = f"{metric_name},resource_id={resource_id} value={value} {timestamp}"
                     influxdb_data.append(influxdb_line)
 
-    return "\n".join(influxdb_data)
+    return influxdb_data
