@@ -33,6 +33,7 @@ async def metrics(request):
     username = request.args.get("username")
     password = request.args.get("password")
     host = request.args.get("host")
+    minutes = request.args.get("minutes", 5)
     if not resource_id:
         return response.json({"error": "resource_id are required"}, status=400)
     config = get_config("vmware", resource_id)
@@ -45,9 +46,9 @@ async def metrics(request):
     )
 
     end_time = datetime.datetime.now()
-    start_time = end_time - datetime.timedelta(minutes=5)
-    start_time_str = start_time.strftime("%Y-%m-%d %H:%M:%S")
-    end_time_str = end_time.strftime("%Y-%m-%d %H:%M:%S")
+    start_time = end_time - datetime.timedelta(minutes=int(minutes))
+    start_time_str = start_time.strftime("%Y-%m-%d %H:%M") + ":00"
+    end_time_str = end_time.strftime("%Y-%m-%d %H:%M") + ":00"
 
     data = driver.get_weops_monitor_data(
         resourceId=resource_id,
