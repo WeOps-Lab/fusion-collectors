@@ -59,8 +59,7 @@ async def vmware_metrics(request):
     )).service()
 
     metric_list = []
-    for key, object_list in object_map.items():
-        object_id = key.replace("_info", "")
+    for object_id, object_list in object_map.items():
         for object_info in object_list:
             resource_id = object_info["inst_name"]
             data = driver.get_weops_monitor_data(
