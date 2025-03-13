@@ -219,10 +219,10 @@ class VmwareManage(object):
         esxi = self.get_hosts()
 
         result = {
-            "vmware_vc_info": [{"vc_version": vc_version, "inst_name": vc_name}],
-            "vmware_ds_info": datastore,
-            "vmware_vm_info": vm_list,
-            "vmware_esxi_info": esxi,
+            "vmware_vc": [{"vc_version": vc_version, "inst_name": vc_name}],
+            "vmware_ds": datastore,
+            "vmware_vm": vm_list,
+            "vmware_esxi": esxi,
         }
 
         return result
@@ -260,8 +260,10 @@ class VmwareManage(object):
             field_str = ",".join([f"{k}={format_value(v)}" for k, v in fields.items()])
             return f"{measurement},{tag_str} {field_str} {timestamp}"
 
-        for metric, labels in data.items():
+        for model_id, labels in data.items():
             for label in labels:
+                label["model_id"] = model_id
+                metric = f"{model_id}_info"
                 tags = {"inst_name": label.pop("inst_name")}
                 lines.append(format_line(metric, tags, label))
 
