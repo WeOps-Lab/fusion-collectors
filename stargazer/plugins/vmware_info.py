@@ -7,6 +7,8 @@ import time
 
 from pyVim.connect import ConnectNoSSL, Disconnect, SmartConnect
 from pyVmomi import vim
+from sanic.log import logger
+
 
 
 class VmwareManage(object):
@@ -30,8 +32,7 @@ class VmwareManage(object):
             self.content = self.si.RetrieveContent()
             return True
         except Exception as err:
-            # logger.error(f"test_connection error! {err}")
-            print(f"test_connection error! {err}")
+            logger.error(f"test_connection error! {err}")
             return False
 
     def get_all_objs(self, obj_type, folder=None):
@@ -47,7 +48,7 @@ class VmwareManage(object):
             si = SmartConnect(**params) if self.ssl else ConnectNoSSL(**params)
             return si
         except Exception as err:
-            print(f"connect vcenter error! {err}")
+            logger.error(f"connect vcenter error! {err}")
             return
 
     def get_hosts(self):
@@ -66,21 +67,21 @@ class VmwareManage(object):
                         if host.summary and host.summary.managementServerIp:
                             ip_addr = host.summary.managementServerIp
                         else:
-                            print("Host config or network is None and no managementServerIp found")
+                            logger.warning("Host config or network is None and no managementServerIp found")
                 except Exception as err:
-                    print(f"get_hosts host ip_add error! {err}")
+                    logger.error(f"get_hosts host ip_add error! {err}")
 
                 esxi_version = ""
                 try:
                     esxi_version = host.config.product.version
                 except Exception as err:
-                    print(f"get_hosts host.config.product.version host esxi_version error! {err}")
+                    logger.error(f"get_hosts host.config.product.version host esxi_version error! {err}")
 
                 if not esxi_version:
                     try:
                         esxi_version = host.summary.config.product.version
                     except Exception as err:
-                        print(f"get_hosts host.summary.config.product host esxi_version error! {err}")
+                        logger.error(f"get_hosts host.summary.config.product host esxi_version error! {err}")
 
                 memory_total = host.hardware.memorySize // 1024 // 1024
 
@@ -170,7 +171,7 @@ class VmwareManage(object):
                 result.append(vm_dict)
 
         except Exception as err:
-            print(f"get_vms error! {err}")
+            logger.error(f"get_vms error! {err}")
 
         return result
 
@@ -207,7 +208,7 @@ class VmwareManage(object):
                     )
                 datacenters_list.append(datacenter_dict)
         except Exception as err:
-            print(f"get_datacenters_and_datastore error! {err}")
+            logger.error(f"get_datacenters_and_datastore error! {err}")
 
         return datacenters_list, datastore_list
 
@@ -234,7 +235,7 @@ class VmwareManage(object):
         try:
             result = self.service()
         except Exception as err:
-            print(f"vmware_info main error! {err}")
+            logger.error(f"vmware_info main error! {err}")
             result = []
 
         try:
@@ -272,7 +273,6 @@ class VmwareManage(object):
 
 if __name__ == '__main__':
     params = {
-        # "hostname": "10.10.16.254",
         # "hostname": "10.10.16.254",
         # "username": "weops-monitor@vsphere.local",
         # "password": "cWweops-monitor@2022",

@@ -1,5 +1,5 @@
 # -- coding: utf-8 --
-# @File: colletc.py
+# @File: collect.py
 # @Time: 2025/2/27 10:41
 # @Author: windyzhao
 
