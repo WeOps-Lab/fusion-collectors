@@ -35,7 +35,7 @@ from aliyunsdkcore.utils.parameter_helper import md5_sum
 # from aliyunsdkcore.vendored.six import add_metaclass
 from aliyunsdkcore.vendored.six import iteritems, iterkeys
 
-from stargazer.monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.auth.composer import rpc_signature_composer as rpc_signer
+from monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.auth.composer import rpc_signature_composer as rpc_signer
 
 """
 Acs request model.

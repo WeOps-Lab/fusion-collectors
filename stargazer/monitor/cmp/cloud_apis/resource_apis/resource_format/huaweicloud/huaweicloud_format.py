@@ -2,8 +2,8 @@
 # @Time : 2021-01-18 19:14
 from __future__ import absolute_import, unicode_literals
 
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import DiskChargeType, DiskType, ZoneStatus
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
+from monitor.cmp.cloud_apis.cloud_constant import DiskChargeType, DiskType, ZoneStatus
+from monitor.cmp.cloud_apis.cloud_object.base import (
     VM,
     VPC,
     Bucket,
@@ -28,8 +28,8 @@ from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
     VServerGroup,
     Zone,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.huaweicloud.huaweicloud_format_utils import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.huaweicloud.huaweicloud_format_utils import (
     handle_bucket_type,
     handle_charge_type,
     handle_eip_charge_type,
@@ -43,7 +43,7 @@ from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.huaweicloud.
     handle_volume_status,
     handle_vpc_status,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import handle_time_stamp, handle_time_str, init_value
+from monitor.cmp.cloud_apis.resource_apis.utils import handle_time_stamp, handle_time_str, init_value
 
 
 class HuaweicloudFormatResource(FormatResource):

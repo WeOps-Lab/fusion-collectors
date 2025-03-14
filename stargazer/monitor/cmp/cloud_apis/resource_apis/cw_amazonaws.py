@@ -13,15 +13,15 @@ import boto3
 import requests
 import xmltodict
 
-from stargazer.monitor.cmp.cloud_apis.base import PublicCloudManage
-from stargazer.monitor.cmp.cloud_apis.common import local_to_utc, utc_to_ts
-from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.amazonaws.amazonaws_constant import (
+from monitor.cmp.cloud_apis.base import PublicCloudManage
+from monitor.cmp.cloud_apis.common import local_to_utc, utc_to_ts
+from monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType
+from monitor.cmp.cloud_apis.resource_apis.resource_format.amazonaws.amazonaws_constant import (
     AmazonAwsAttachStatus,
     AmazonAwsVMStatus,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import fail, success
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.cloud_apis.resource_apis.utils import fail, success
 
 https_port = "443"
 logger = logging.getLogger("root")

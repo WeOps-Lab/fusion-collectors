@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import CloudPlatform
-from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.cw_tke_cloud import CwTKECloud
-from stargazer.monitor.cmp.cloud_apis.resource_apis.sync_cloud_resource.base import SyncBaseResource
-from stargazer.monitor.cmp.exceptions import SyncResourceDataError
-from stargazer.monitor.cmp.models import (
+from monitor.cmp.cloud_apis.cloud_constant import CloudPlatform
+from monitor.cmp.cloud_apis.constant import CloudResourceType
+from monitor.cmp.cloud_apis.resource_apis.cw_tke_cloud import CwTKECloud
+from monitor.cmp.cloud_apis.resource_apis.sync_cloud_resource.base import SyncBaseResource
+from monitor.cmp.exceptions import SyncResourceDataError
+from monitor.cmp.models import (
     VM,
     VPC,
     Bucket,
@@ -22,7 +22,7 @@ from stargazer.monitor.cmp.models import (
     TKECloudCluster,
     TKECloudNodeList,
 )
-from stargazer.monitor.cmp.utils import list_dict_duplicate_removal
+from monitor.cmp.utils import list_dict_duplicate_removal
 
 
 class SyncPublicCloudResource(SyncBaseResource):

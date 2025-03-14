@@ -3,7 +3,7 @@
 import hashlib
 import threading
 
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
+from monitor.cmp.cloud_apis.cloud_object.base import (
     VM,
     VPC,
     Balance,
@@ -29,7 +29,7 @@ from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
     Transactions,
     Zone,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_format_utils import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_format_utils import (
     format_bucket_type,
     format_qcloud_disk_charge_type,
     format_qcloud_disk_status,
@@ -48,7 +48,7 @@ from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qclou
     get_qcloud_subnet_status,
     get_qcloud_vpc_status,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import handle_time_str
+from monitor.cmp.cloud_apis.resource_apis.utils import handle_time_str
 
 
 class QCloudResourceFormat:

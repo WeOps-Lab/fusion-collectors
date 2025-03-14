@@ -3,11 +3,11 @@ import ssl
 
 import qingcloud.iaas
 
-from stargazer.monitor.cmp.cloud_apis.base import PrivateCloudManage
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import CloudPlatform
-from stargazer.monitor.cmp.cloud_apis.constant import CloudType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import fail, success
+from monitor.cmp.cloud_apis.base import PrivateCloudManage
+from monitor.cmp.cloud_apis.cloud_constant import CloudPlatform
+from monitor.cmp.cloud_apis.constant import CloudType
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.cloud_apis.resource_apis.utils import fail, success
 
 logger = logging.getLogger("root")
 VM_ACTION = (

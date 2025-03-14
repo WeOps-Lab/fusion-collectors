@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """阿里云转换数据格式时的工具方法"""
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import (
+from monitor.cmp.cloud_apis.cloud_constant import (
     BucketType,
     DiskCategory,
     DiskChargeType,
@@ -20,7 +20,7 @@ from stargazer.monitor.cmp.cloud_apis.cloud_constant import (
     VMStatus,
     VPCStatus,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.aliyun.aliyun_constant import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.aliyun.aliyun_constant import (
     AliyunBucketType,
     AliyunChargeType,
     AliyunDiskCategory,

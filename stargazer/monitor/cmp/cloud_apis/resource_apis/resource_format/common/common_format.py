@@ -2,7 +2,7 @@
 # @Time : 2021-01-21 16:42
 import threading
 
-from stargazer.monitor.cmp.cloud_apis.exceptions import RewriteException
+from monitor.cmp.cloud_apis.exceptions import RewriteException
 
 
 class FormatResource:

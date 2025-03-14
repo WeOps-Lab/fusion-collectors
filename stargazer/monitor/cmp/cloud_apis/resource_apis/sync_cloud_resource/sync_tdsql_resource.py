@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """同步tdsql资源"""
-from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.sync_cloud_resource.cloud_resource import SyncPrivateCloudResource
-from stargazer.monitor.cmp.exceptions import SyncResourceDataError
-from stargazer.monitor.cmp.models import TDSQL
+from monitor.cmp.cloud_apis.constant import CloudResourceType
+from monitor.cmp.cloud_apis.resource_apis.sync_cloud_resource.cloud_resource import SyncPrivateCloudResource
+from monitor.cmp.exceptions import SyncResourceDataError
+from monitor.cmp.models import TDSQL
 
 
 class SyncTDSQLResource(SyncPrivateCloudResource):

@@ -14,9 +14,9 @@
 
 import json
 
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.abstract_client import AbstractClient
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.dcdb.v20180411 import models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.abstract_client import AbstractClient
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.dcdb.v20180411 import models
 
 
 class DcdbClient(AbstractClient):

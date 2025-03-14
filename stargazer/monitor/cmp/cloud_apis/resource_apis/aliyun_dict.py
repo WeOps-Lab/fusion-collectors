@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """阿里云各种枚举属性的映射字典 中英文对照"""
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.aliyun.aliyun_constant import AliyunBucketType, AliyunDiskCategory
+from monitor.cmp.cloud_apis.resource_apis.resource_format.aliyun.aliyun_constant import AliyunBucketType, AliyunDiskCategory
 
 # 磁盘类型
 disk_category_dict = {

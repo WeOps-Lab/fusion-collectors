@@ -12,11 +12,11 @@ from pyVim.connect import SmartConnect
 from pyVim.task import WaitForTask
 from pyVmomi import vim
 
-from stargazer.monitor.cmp.cloud_apis.base import PrivateCloudManage
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import VPC, Disk, Image, Region, Subnet, Zone
-from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.utils import convert_param_to_list, get_compute_price_module, get_storage_pricemodule
+from monitor.cmp.cloud_apis.base import PrivateCloudManage
+from monitor.cmp.cloud_apis.cloud_object.base import VPC, Disk, Image, Region, Subnet, Zone
+from monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.utils import convert_param_to_list, get_compute_price_module, get_storage_pricemodule
 
 # from .constant import VmwareVirtualMachineStatus
 

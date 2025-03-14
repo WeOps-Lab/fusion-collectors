@@ -7,7 +7,7 @@ from sanic import Blueprint, json
 from sanic.log import logger
 from sanic import response
 
-from stargazer.service.collect_service import CollectService
+from service.collect_service import CollectService
 
 collect_router = Blueprint("collect", url_prefix="/collect")
 

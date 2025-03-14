@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """tce资源属性格式转换方法"""
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import VMChargeType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.tce.tce_constant import TCEVmChargeType
+from monitor.cmp.cloud_apis.cloud_constant import VMChargeType
+from monitor.cmp.cloud_apis.resource_apis.resource_format.tce.tce_constant import TCEVmChargeType
 
 
 # ******************************************** 实例 vm

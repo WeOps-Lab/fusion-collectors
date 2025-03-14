@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time : 2021-01-21 10:29
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import DiskStatus, ImageStatus, SnapshotStatus, VMStatus, VPCStatus
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.openstack.openstack_constant import (
+from monitor.cmp.cloud_apis.cloud_constant import DiskStatus, ImageStatus, SnapshotStatus, VMStatus, VPCStatus
+from monitor.cmp.cloud_apis.resource_apis.resource_format.openstack.openstack_constant import (
     OpenStackImageStatus,
     OpenStackNetworkStatus,
     OpenStackSnapshotStatus,

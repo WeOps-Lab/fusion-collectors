@@ -1,5 +1,5 @@
 # from aliyunsdkasapi.request import RpcRequest
-from stargazer.monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.request import RpcRequest
+from monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.request import RpcRequest
 
 
 class AsapiRequest(RpcRequest):

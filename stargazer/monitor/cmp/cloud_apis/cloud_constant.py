@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from enum import Enum
 
-from stargazer.monitor.cmp.cloud_apis.constant import CloudType
+from monitor.cmp.cloud_apis.constant import CloudType
 
 from ..models import (  # HostMachine,
     TDSQL,

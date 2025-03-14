@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from loguru import logger
 
-from stargazer.monitor.cmp.exceptions import SyncResourceDataError
-from stargazer.monitor.cmp.models import (
+from monitor.cmp.exceptions import SyncResourceDataError
+from monitor.cmp.models import (
     VM,
     VPC,
     AccountConfig,

@@ -8,8 +8,8 @@ from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
 from Crypto.Util.number import bytes_to_long
 
-from stargazer.monitor.cmp.cloud_apis.base import PrivateCloudManage
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import VM
+from monitor.cmp.cloud_apis.base import PrivateCloudManage
+from monitor.cmp.cloud_apis.cloud_object.base import VM
 
 logger = logging.getLogger("root")
 

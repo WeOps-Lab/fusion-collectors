@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import json
 
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import VMStatus
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import VM
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
+from monitor.cmp.cloud_apis.cloud_constant import VMStatus
+from monitor.cmp.cloud_apis.cloud_object.base import VM
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
 
 
 class CasFormatResource(FormatResource):

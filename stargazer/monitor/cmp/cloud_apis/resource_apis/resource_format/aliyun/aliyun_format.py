@@ -4,7 +4,7 @@ import hashlib
 import json
 import threading
 
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
+from monitor.cmp.cloud_apis.cloud_object.base import (
     VM,
     VPC,
     Balance,
@@ -33,7 +33,7 @@ from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
     VServerGroup,
     Zone,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.aliyun.aliyun_format_utils import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.aliyun.aliyun_format_utils import (
     format_bucket_type,
     format_charge_type,
     format_disk_category,
@@ -55,7 +55,7 @@ from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.aliyun.aliyu
     format_tag,
     format_vpc_status,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import handle_time_stamp, handle_time_str, init_value
+from monitor.cmp.cloud_apis.resource_apis.utils import handle_time_stamp, handle_time_str, init_value
 
 
 class AliyunResourceFormat:

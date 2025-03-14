@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Time : 2021-01-18 19:52
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import (
+from monitor.cmp.cloud_apis.cloud_constant import (
     BucketType,
     DiskCategory,
     DiskStatus,
@@ -14,7 +14,7 @@ from stargazer.monitor.cmp.cloud_apis.cloud_constant import (
     VMStatus,
     VPCStatus,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.huaweicloud.huaweicloud_constant import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.huaweicloud.huaweicloud_constant import (
     HwCloudBucketType,
     HwCloudDiskType,
     HwCloudEipChargeType,

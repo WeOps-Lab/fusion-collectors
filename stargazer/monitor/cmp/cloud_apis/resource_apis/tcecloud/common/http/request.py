@@ -12,7 +12,7 @@ except ImportError:
     from httplib import HTTPConnection, BadStatusLine, HTTPSConnection
     from urlparse import urlparse
 
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
 
 protocol = "http"
 

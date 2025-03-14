@@ -14,9 +14,9 @@
 
 import json
 
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.ckafka.v20190819 import models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.abstract_client import AbstractClient
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.ckafka.v20190819 import models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.abstract_client import AbstractClient
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
 
 
 class CkafkaClient(AbstractClient):

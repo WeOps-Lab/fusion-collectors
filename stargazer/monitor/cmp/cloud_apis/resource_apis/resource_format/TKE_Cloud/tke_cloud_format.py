@@ -2,8 +2,8 @@
 """tke_cloud数据格式转换"""
 import threading
 
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import TKECloudClusters, TKECloudNodeList
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
+from monitor.cmp.cloud_apis.cloud_object.base import TKECloudClusters, TKECloudNodeList
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
 
 
 class TKECloudResourceFormat(FormatResource):

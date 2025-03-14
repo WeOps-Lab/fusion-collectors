@@ -1,7 +1,7 @@
 import requests
 
 from cmp import settings
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.TKE_Cloud.tke_cloud_format import TKECloudResourceFormat
+from monitor.cmp.cloud_apis.resource_apis.resource_format.TKE_Cloud.tke_cloud_format import TKECloudResourceFormat
 
 
 class CwTKECloud:
@@ -129,7 +129,7 @@ if __name__ == "__main__":
     # # cw.node_details('mc-6npmcrfm')
     # # cw.clusters()
     #
-    # from stargazer.monitor.cmp.cloud_apis.resource_apis.sync_cloud_resource.cloud_resource import SyncTKECloudResource
+    # from monitor.cmp.cloud_apis.resource_apis.sync_cloud_resource.cloud_resource import SyncTKECloudResource
     #
     # sytke = SyncTKECloudResource()
     # sytke.sync_node_list()

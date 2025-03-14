@@ -3,13 +3,13 @@ import logging
 
 import oss2
 
-from stargazer.monitor.cmp.cloud_apis.constant import CloudType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.aliyun_dict import disk_category_dict
-from stargazer.monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.AsapiRequest import AsapiRequest
-from stargazer.monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.ASClient import ASClient
-from stargazer.monitor.cmp.cloud_apis.resource_apis.cw_aliyun import Aliyun, checkout_required_parameters
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.utils import convert_param_to_list
+from monitor.cmp.cloud_apis.constant import CloudType
+from monitor.cmp.cloud_apis.resource_apis.aliyun_dict import disk_category_dict
+from monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.AsapiRequest import AsapiRequest
+from monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.ASClient import ASClient
+from monitor.cmp.cloud_apis.resource_apis.cw_aliyun import Aliyun, checkout_required_parameters
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.utils import convert_param_to_list
 
 logger = logging.getLogger("root")
 

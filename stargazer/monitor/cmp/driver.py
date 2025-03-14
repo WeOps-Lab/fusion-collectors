@@ -6,7 +6,7 @@ logger = logging.getLogger("root")
 
 
 try:
-    from stargazer.monitor.cmp.cloud_apis.resource_client import ResourceClient
+    from monitor.cmp.cloud_apis.resource_client import ResourceClient
 except Exception:
     logger.exception("cmp error")
     raise ModuleNotFoundError("must build cmp directory or pip install -r cmp/requirements.txt")

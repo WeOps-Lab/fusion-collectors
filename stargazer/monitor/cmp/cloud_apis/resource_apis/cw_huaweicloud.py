@@ -229,17 +229,17 @@ from loguru import logger
 from obs import DeleteObjectsRequest, Object, ObsClient
 from six.moves import range
 
-from stargazer.monitor.cmp.cloud_apis.base import PublicCloudManage
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import CloudPlatform
-from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.huaweicloud.huaweicloud_constant import (
+from monitor.cmp.cloud_apis.base import PublicCloudManage
+from monitor.cmp.cloud_apis.cloud_constant import CloudPlatform
+from monitor.cmp.cloud_apis.constant import CloudResourceType
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.cloud_apis.resource_apis.resource_format.huaweicloud.huaweicloud_constant import (
     HwCloudDiskType,
     huaweicloud_bucket_cn_dict,
     huaweicloud_disk_cn_dict,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import check_required_params, fail, set_optional_params_huawei, success
-from stargazer.monitor.cmp.utils import (
+from monitor.cmp.cloud_apis.resource_apis.utils import check_required_params, fail, set_optional_params_huawei, success
+from monitor.cmp.utils import (
     format_huawei_bill_charge_mode,
     format_public_cloud_resource_type,
     generate_serial_number,

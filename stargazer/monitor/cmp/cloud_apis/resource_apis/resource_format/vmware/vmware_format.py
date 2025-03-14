@@ -4,7 +4,7 @@ import threading
 
 from loguru import logger
 
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
+from monitor.cmp.cloud_apis.cloud_object.base import (
     VM,
     VPC,
     Cluster,
@@ -18,8 +18,8 @@ from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
     Zone,
 )
 
-# from stargazer.monitor.cmp.cloud_apis.resource_apis.constant import VmwareVirtualMachineStatus
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.vmware.vmware_format_utils import (
+# from monitor.cmp.cloud_apis.resource_apis.constant import VmwareVirtualMachineStatus
+from monitor.cmp.cloud_apis.resource_apis.resource_format.vmware.vmware_format_utils import (
     format_disk_status,
     format_disk_type,
     format_image_status,

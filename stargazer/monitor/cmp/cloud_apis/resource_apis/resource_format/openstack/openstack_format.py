@@ -2,7 +2,7 @@
 # @Time : 2021-01-21 10:30
 from __future__ import absolute_import, unicode_literals
 
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import (
+from monitor.cmp.cloud_apis.cloud_constant import (
     DiskCategory,
     DiskChargeType,
     EipChargeType,
@@ -12,7 +12,7 @@ from stargazer.monitor.cmp.cloud_apis.cloud_constant import (
     VMChargeType,
     ZoneStatus,
 )
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
+from monitor.cmp.cloud_apis.cloud_object.base import (
     VM,
     VPC,
     Disk,
@@ -29,14 +29,14 @@ from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
     Subnet,
     Zone,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.openstack.openstack_format_utils import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.openstack.openstack_format_utils import (
     handle_network_status,
     handle_snapshot_status,
     handle_vm_status,
     handle_volume_status,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import init_value
+from monitor.cmp.cloud_apis.resource_apis.utils import init_value
 
 
 class OpenStackFormatResource(FormatResource):

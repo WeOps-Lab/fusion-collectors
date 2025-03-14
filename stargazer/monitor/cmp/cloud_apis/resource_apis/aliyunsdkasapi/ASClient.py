@@ -1,5 +1,5 @@
 # from aliyunsdkasapi.client import AcsClient
-from stargazer.monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.client import AcsClient
+from monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.client import AcsClient
 
 
 class ASClient(AcsClient):

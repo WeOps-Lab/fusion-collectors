@@ -11,11 +11,11 @@ from keystoneclient.v3 import client as ksclient
 from neutronclient.v2_0 import client as netclient
 from novaclient import client as nvclient
 
-from stargazer.monitor.cmp.cloud_apis.base import PrivateCloudManage
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import CloudPlatform, DiskType
-from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.utils import get_compute_price_module, get_storage_pricemodule
+from monitor.cmp.cloud_apis.base import PrivateCloudManage
+from monitor.cmp.cloud_apis.cloud_constant import CloudPlatform, DiskType
+from monitor.cmp.cloud_apis.constant import CloudResourceType
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.utils import get_compute_price_module, get_storage_pricemodule
 
 logger = logging.getLogger("root")
 

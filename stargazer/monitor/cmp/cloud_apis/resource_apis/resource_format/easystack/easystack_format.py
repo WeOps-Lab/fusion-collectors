@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import json
 
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import VMChargeType
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import VM
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.openstack.openstack_format_utils import handle_vm_status
+from monitor.cmp.cloud_apis.cloud_constant import VMChargeType
+from monitor.cmp.cloud_apis.cloud_object.base import VM
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.openstack.openstack_format_utils import handle_vm_status
 
 
 class EasyStackFormatResource(FormatResource):

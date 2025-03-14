@@ -11,10 +11,10 @@ from hashlib import sha256
 
 import requests
 
-from stargazer.monitor.cmp.cloud_apis.base import PrivateCloudManage
-from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import fail, success
+from monitor.cmp.cloud_apis.base import PrivateCloudManage
+from monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.cloud_apis.resource_apis.utils import fail, success
 
 logger = logging.getLogger("root")
 

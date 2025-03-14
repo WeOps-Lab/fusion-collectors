@@ -18,9 +18,9 @@ import json
 # from tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
 # from tcecloud.common.abstract_client import AbstractClient
 # from tcecloud.mongodb.v20190725 import models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.abstract_client import AbstractClient
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.mongodb.v20190725 import models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.abstract_client import AbstractClient
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.mongodb.v20190725 import models
 
 
 class MongodbClient(AbstractClient):

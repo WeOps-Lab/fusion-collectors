@@ -4,8 +4,8 @@ from __future__ import absolute_import, unicode_literals
 import datetime
 import time
 
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import DiskChargeType, EipStatus
-from stargazer.monitor.cmp.cloud_apis.constant import DiskCategory, SubnetStatus
+from monitor.cmp.cloud_apis.cloud_constant import DiskChargeType, EipStatus
+from monitor.cmp.cloud_apis.constant import DiskCategory, SubnetStatus
 
 
 def handle_time_str(time_str):

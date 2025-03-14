@@ -2,21 +2,21 @@
 """云插件格式化基础类"""
 import threading
 
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import CloudPlatform
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.aliyun.aliyun_format import AliyunResourceFormat
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.amazonaws.amazonaws_format import AmazonAwsFormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.cas.cas_format import CasFormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.easystack.easystack_format import EasyStackFormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.fusioncloud.fusioncloud_format import FusionCloudFormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.huaweicloud.huaweicloud_format import HuaweicloudFormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.openstack.openstack_format import OpenStackFormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_format import QCloudResourceFormat
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.qingcloud.qingcloud_format import QingCloudFormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.tce.tce_format import TCEResourceFormat
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.tdsql.tdsql_format import TDSQLResourceFormat
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.TKE_Cloud.tke_cloud_format import TKECloudResourceFormat
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.tsf.tsf_format import TSFResourceFormat
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.vmware.vmware_format import VmWareResourceFormat
+from monitor.cmp.cloud_apis.cloud_constant import CloudPlatform
+from monitor.cmp.cloud_apis.resource_apis.resource_format.aliyun.aliyun_format import AliyunResourceFormat
+from monitor.cmp.cloud_apis.resource_apis.resource_format.amazonaws.amazonaws_format import AmazonAwsFormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.cas.cas_format import CasFormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.easystack.easystack_format import EasyStackFormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.fusioncloud.fusioncloud_format import FusionCloudFormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.huaweicloud.huaweicloud_format import HuaweicloudFormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.openstack.openstack_format import OpenStackFormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_format import QCloudResourceFormat
+from monitor.cmp.cloud_apis.resource_apis.resource_format.qingcloud.qingcloud_format import QingCloudFormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.tce.tce_format import TCEResourceFormat
+from monitor.cmp.cloud_apis.resource_apis.resource_format.tdsql.tdsql_format import TDSQLResourceFormat
+from monitor.cmp.cloud_apis.resource_apis.resource_format.TKE_Cloud.tke_cloud_format import TKECloudResourceFormat
+from monitor.cmp.cloud_apis.resource_apis.resource_format.tsf.tsf_format import TSFResourceFormat
+from monitor.cmp.cloud_apis.resource_apis.resource_format.vmware.vmware_format import VmWareResourceFormat
 
 
 def get_format_method(cloud_type, resource, **kwargs):

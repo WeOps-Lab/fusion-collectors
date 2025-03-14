@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.vmware.vmware_constant import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.vmware.vmware_constant import (
     VmwareDiskStatus,
     VmwareDiskType,
     VmwareImageStatus,

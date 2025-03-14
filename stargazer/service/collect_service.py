@@ -22,7 +22,7 @@ class CollectService(object):
     def collect(self):
         try:
             # 动态加载插件
-            module = importlib.import_module(f'stargazer.plugins.{self.plugin_name}')
+            module = importlib.import_module(f'plugins.{self.plugin_name}')
             plugin_class = getattr(module, self.plugin_name_map[self.plugin_name])
             plugin_instance = plugin_class(self.params)
             result = plugin_instance.list_all_resources()

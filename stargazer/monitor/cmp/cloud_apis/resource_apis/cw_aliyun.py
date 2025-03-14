@@ -131,11 +131,11 @@ from aliyunsdkvpc.request.v20160428 import (  # DescribeEipAddressesRequest,
 from six.moves import range
 from Tea.core import TeaCore
 
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import Bucket
-from stargazer.monitor.cmp.cloud_apis.constant import CloudType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.aliyun_dict import disk_category_dict, object_storage_type_dict
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.utils import (
+from monitor.cmp.cloud_apis.cloud_object.base import Bucket
+from monitor.cmp.cloud_apis.constant import CloudType
+from monitor.cmp.cloud_apis.resource_apis.aliyun_dict import disk_category_dict, object_storage_type_dict
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.utils import (
     convert_param_to_list,
     format_ali_bill_charge_mode,
     format_public_cloud_resource_type,

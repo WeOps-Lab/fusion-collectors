@@ -5,7 +5,7 @@ import hashlib
 import hmac
 import sys
 
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
 
 
 class Sign(object):

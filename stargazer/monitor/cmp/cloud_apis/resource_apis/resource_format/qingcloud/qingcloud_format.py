@@ -1,5 +1,5 @@
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import DiskCategory, DiskStatus, ImageStatus, ImageType, VPCStatus
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
+from monitor.cmp.cloud_apis.cloud_constant import DiskCategory, DiskStatus, ImageStatus, ImageType, VPCStatus
+from monitor.cmp.cloud_apis.cloud_object.base import (
     VM,
     VPC,
     Disk,
@@ -14,10 +14,10 @@ from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
     Subnet,
     Zone,
 )
-from stargazer.monitor.cmp.cloud_apis.constant import VMStatusType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.qingcloud.qingcloud_constant import QingCloudDiskStatus
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import handle_time_str
+from monitor.cmp.cloud_apis.constant import VMStatusType
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.qingcloud.qingcloud_constant import QingCloudDiskStatus
+from monitor.cmp.cloud_apis.resource_apis.utils import handle_time_str
 
 
 def handle_vm_status(status):

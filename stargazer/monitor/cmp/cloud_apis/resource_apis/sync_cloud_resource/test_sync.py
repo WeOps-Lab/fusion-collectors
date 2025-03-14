@@ -5,9 +5,9 @@ from unittest import TestCase
 from home_application.helpers.password_crypt import aes_decrypt
 from home_application.models import AccountConfig
 
-from stargazer.monitor.cmp.cloud_apis.collection import SYNC_RESOURCE_MAPPING
-from stargazer.monitor.cmp.cloud_apis.resource_client import ResourceClient
-from stargazer.monitor.cmp.cloud_apis.runner import sync_resource_data
+from monitor.cmp.cloud_apis.collection import SYNC_RESOURCE_MAPPING
+from monitor.cmp.cloud_apis.resource_client import ResourceClient
+from monitor.cmp.cloud_apis.runner import sync_resource_data
 
 
 class MyTestCase(TestCase):

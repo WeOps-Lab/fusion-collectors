@@ -50,7 +50,7 @@ from aliyunsdkcore.vendored.requests.structures import CaseInsensitiveDict, Orde
 from aliyunsdkcore.vendored.six.moves.urllib.parse import urlencode
 
 # from aliyunsdkasapi.http.http_response import HttpResponse
-from stargazer.monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.http.http_response import HttpResponse
+from monitor.cmp.cloud_apis.resource_apis.aliyunsdkasapi.http.http_response import HttpResponse
 
 """
 Acs default client module.

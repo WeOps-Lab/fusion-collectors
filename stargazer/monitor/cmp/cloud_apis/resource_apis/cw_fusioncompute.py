@@ -9,8 +9,8 @@ import uuid
 import requests
 from obs import ObsClient
 
-from stargazer.monitor.cmp.cloud_apis.base import PrivateCloudManage
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (  # LocalStorage,
+from monitor.cmp.cloud_apis.base import PrivateCloudManage
+from monitor.cmp.cloud_apis.cloud_object.base import (  # LocalStorage,
     VM,
     VPC,
     Bucket,
@@ -30,8 +30,8 @@ from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (  # LocalStorage
     Subnet,
     Zone,
 )
-from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType, SnapshotStatus, VMStatusType, VolumeStatus, VPCStatus
-from stargazer.monitor.cmp.cloud_apis.resource_apis.constant import (
+from monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType, SnapshotStatus, VMStatusType, VolumeStatus, VPCStatus
+from monitor.cmp.cloud_apis.resource_apis.constant import (
     FCDiskStatus,
     FCSnapshotStatus,
     FCVMStatus,
@@ -39,8 +39,8 @@ from stargazer.monitor.cmp.cloud_apis.resource_apis.constant import (
     FusionComputeSiteStatus,
     FusionComputeSnapshotType,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import check_required_params, fail, set_optional_params
-from stargazer.monitor.cmp.models import AccountConfig
+from monitor.cmp.cloud_apis.resource_apis.utils import check_required_params, fail, set_optional_params
+from monitor.cmp.models import AccountConfig
 
 logger = logging.getLogger("root")
 

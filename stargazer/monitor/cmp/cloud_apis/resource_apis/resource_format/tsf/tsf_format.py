@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import Application
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.tce.tce_format import TCEResourceFormat
+from monitor.cmp.cloud_apis.cloud_object.base import Application
+from monitor.cmp.cloud_apis.resource_apis.resource_format.tce.tce_format import TCEResourceFormat
 
 
 class TSFResourceFormat(TCEResourceFormat):

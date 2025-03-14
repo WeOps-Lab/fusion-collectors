@@ -2,10 +2,10 @@
 """TDSQL数据格式转换"""
 import threading
 
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import TDSQL
+from monitor.cmp.cloud_apis.cloud_object.base import TDSQL
 
-# from stargazer.monitor.cmp.cloud_apis.resource_apis.constant import VmwareVirtualMachineStatus
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.tdsql.tdsql_format_utils import (
+# from monitor.cmp.cloud_apis.resource_apis.constant import VmwareVirtualMachineStatus
+from monitor.cmp.cloud_apis.resource_apis.resource_format.tdsql.tdsql_format_utils import (
     format_instance_status,
     format_readonly_status,
 )

@@ -1,6 +1,6 @@
 import datetime
 
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import (
+from monitor.cmp.cloud_apis.cloud_constant import (
     DiskCategory,
     DiskStatus,
     ImageStatus,
@@ -11,7 +11,7 @@ from stargazer.monitor.cmp.cloud_apis.cloud_constant import (
     VMStatus,
     VPCStatus,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.amazonaws.amazonaws_constant import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.amazonaws.amazonaws_constant import (
     AmazonAwsImageState,
     AmazonAwsRegionStatus,
     AmazonAwsSnapshotStatus,
@@ -128,7 +128,7 @@ def format_rule_protocol(protocol):
     protocol_dict = {
         AwsSecurityGroupRuleProtocol.TCP.value: "TCP",
         AwsSecurityGroupRuleProtocol.UDP.value: "UDP",
-        AwsSecurityGroupRuleProtocol.Istargazer.monitor.cmp.value: "ICMP",
+        AwsSecurityGroupRuleProtocol.Imonitor.cmp.value: "ICMP",
         AwsSecurityGroupRuleProtocol.ICMPv6.value: "ICMPv6",
         AwsSecurityGroupRuleProtocol.ALL.value: "ALL",
     }

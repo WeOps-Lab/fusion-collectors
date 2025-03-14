@@ -114,8 +114,8 @@ from aliyunsdkvpc.request.v20160428 import (  # DescribeEipAddressesRequest,
 from six.moves import range
 from Tea.core import TeaCore
 
-from stargazer.plugins.base import CloudType, RESOURCE_MAP
-from stargazer.plugins.base_utils import get_format_method, set_dir_size
+from plugins.base import CloudType, RESOURCE_MAP
+from plugins.base_utils import get_format_method, set_dir_size
 
 
 def convert_param_to_list(param):

@@ -28,11 +28,11 @@ try:
 except ImportError:
     from urllib import urlencode
 
-from stargazer.monitor.cmp.cloud_apis.resource_apis import tcecloud
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.http.request import ApiRequest, RequestInternal
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.profile.client_profile import ClientProfile
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.sign import Sign
+from monitor.cmp.cloud_apis.resource_apis import tcecloud
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.http.request import ApiRequest, RequestInternal
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.profile.client_profile import ClientProfile
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.sign import Sign
 
 warnings.filterwarnings("ignore")
 

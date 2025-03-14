@@ -2,7 +2,7 @@
 """TDSQL各种状态和Model中的状态双向映射"""
 from enum import Enum
 
-from stargazer.monitor.cmp.models import TDSQL
+from monitor.cmp.models import TDSQL
 
 
 class TDSQLStatus(Enum):

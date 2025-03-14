@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from stargazer.monitor.cmp.exceptions import BlueException
+from monitor.cmp.exceptions import BlueException
 
 
 class RewriteException(BlueException):

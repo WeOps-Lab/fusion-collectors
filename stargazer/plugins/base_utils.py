@@ -5,7 +5,7 @@
 import threading
 import time
 
-from stargazer.plugins.base import CloudPlatform
+from plugins.base import CloudPlatform
 
 
 def set_dir_size(dir_object, object_lists, cloud_type="aliyun"):

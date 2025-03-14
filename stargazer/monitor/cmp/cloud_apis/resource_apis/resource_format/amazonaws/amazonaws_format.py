@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
+from monitor.cmp.cloud_apis.cloud_object.base import (
     VM,
     VPC,
     Disk,
@@ -11,7 +11,7 @@ from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
     Subnet,
     Zone,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.amazonaws.amazonaws_format_utils import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.amazonaws.amazonaws_format_utils import (
     format_image_state,
     format_is_attached,
     format_region_status,
@@ -25,7 +25,7 @@ from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.amazonaws.am
     format_vpc_status,
     handle_time_str,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.common_format import FormatResource
 
 
 class AmazonAwsFormatResource(FormatResource):

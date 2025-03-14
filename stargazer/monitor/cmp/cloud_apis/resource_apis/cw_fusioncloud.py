@@ -7,18 +7,18 @@ import IPy
 import requests
 from obs import ObsClient
 
-from stargazer.monitor.cmp.cloud_apis.base import PrivateCloudManage
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import CloudPlatform
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import VM, Disk, Domain, Image, InstanceType, Project, Region, Subnet, Zone
-from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType, SubnetStatus
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.openstack.openstack_format_utils import (
+from monitor.cmp.cloud_apis.base import PrivateCloudManage
+from monitor.cmp.cloud_apis.cloud_constant import CloudPlatform
+from monitor.cmp.cloud_apis.cloud_object.base import VM, Disk, Domain, Image, InstanceType, Project, Region, Subnet, Zone
+from monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType, SubnetStatus
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.cloud_apis.resource_apis.resource_format.openstack.openstack_format_utils import (
     handle_image_status,
     handle_vm_status,
     handle_volume_status,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import fail, success
-from stargazer.monitor.cmp.utils import set_dir_size
+from monitor.cmp.cloud_apis.resource_apis.utils import fail, success
+from monitor.cmp.utils import set_dir_size
 
 logger = logging.getLogger("root")
 https_port = "443"

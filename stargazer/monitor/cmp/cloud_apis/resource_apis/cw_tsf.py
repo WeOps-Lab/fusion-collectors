@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from stargazer.monitor.cmp.cloud_apis.constant import CloudType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.cw_tce import TCE
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common import credential
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
+from monitor.cmp.cloud_apis.constant import CloudType
+from monitor.cmp.cloud_apis.resource_apis.cw_tce import TCE
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common import credential
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
 
 # 导入可选配置类
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.tsf.v20180326 import models as tsf_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.tsf.v20180326 import tsf_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.tsf.v20180326 import models as tsf_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.tsf.v20180326 import tsf_client
 
 logger = logging.getLogger("root")
 

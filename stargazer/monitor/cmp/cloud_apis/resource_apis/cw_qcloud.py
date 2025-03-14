@@ -35,14 +35,14 @@ from tencentcloud.tke.v20180525 import tke_client
 from tencentcloud.vpc.v20170312 import models as vpc_models
 from tencentcloud.vpc.v20170312 import vpc_client
 
-from stargazer.monitor.cmp.cloud_apis.constant import CloudType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_constant import (
+from monitor.cmp.cloud_apis.constant import CloudType
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_constant import (
     qcloud_bucket_cn_dict,
     qcloud_disk_cn_dict,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import handle_disk_category
-from stargazer.monitor.cmp.utils import (
+from monitor.cmp.cloud_apis.resource_apis.utils import handle_disk_category
+from monitor.cmp.utils import (
     convert_param_to_list,
     format_public_cloud_resource_type,
     generate_serial_number,

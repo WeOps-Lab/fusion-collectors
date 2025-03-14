@@ -7,53 +7,53 @@ import time
 from qcloud_cos import CosConfig, CosS3Client
 from qcloud_cos.cos_comm import format_region
 
-from stargazer.monitor.cmp.cloud_apis.base import PublicCloudManage
-from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.tce.tce_constant import (
+from monitor.cmp.cloud_apis.base import PublicCloudManage
+from monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType
+from monitor.cmp.cloud_apis.resource_apis.resource_format.common.base_format import get_format_method
+from monitor.cmp.cloud_apis.resource_apis.resource_format.tce.tce_constant import (
     REDISTYPENAME,
     RedisType,
     tce_bucket_cn_dict,
     tce_disk_cn_dict,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.bms.v20180813 import bms_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.bms.v20180813 import models as bms_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.cbs.v20170312 import cbs_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.cbs.v20170312 import models as cbs_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.cfs.v20190719 import cfs_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.cfs.v20190719 import models as cfs_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.ckafka.v20190819 import ckafka_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.ckafka.v20190819 import models as ckafka_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.clb.v20180317 import clb_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.clb.v20180317 import models as clb_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common import credential
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.profile.client_profile import ClientProfile
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.common.profile.http_profile import HttpProfile
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.csp.v20200107 import csp_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.csp.v20200107 import models as csp_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.cvm.v20170312 import cvm_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.cvm.v20170312 import models as cvm_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.dcdb.v20180411 import dcdb_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.dcdb.v20180411 import models as dcdb_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.mariadb.v20170312 import mariadb_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.mariadb.v20170312 import models as mariadb_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.mongodb.v20190725 import models as mongodb_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.mongodb.v20190725 import mongodb_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.monitor.v20170312 import models as monitor_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.monitor.v20170312 import monitor_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.monitor.v20180724 import models as alarm_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.monitor.v20180724 import monitor_client as alarm_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.redis.v20180412 import models as redis_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.redis.v20180412 import redis_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.tcr.v20190924 import models as tcr_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.tcr.v20190924 import tcr_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.tke.v20180525 import models as tke_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.tke.v20180525 import tke_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.vpc.v20170312 import models as vpc_models
-from stargazer.monitor.cmp.cloud_apis.resource_apis.tcecloud.vpc.v20170312 import vpc_client
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import handle_time_str
-from stargazer.monitor.cmp.utils import convert_param_to_list, get_compute_price_module, get_storage_pricemodule
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.bms.v20180813 import bms_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.bms.v20180813 import models as bms_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.cbs.v20170312 import cbs_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.cbs.v20170312 import models as cbs_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.cfs.v20190719 import cfs_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.cfs.v20190719 import models as cfs_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.ckafka.v20190819 import ckafka_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.ckafka.v20190819 import models as ckafka_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.clb.v20180317 import clb_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.clb.v20180317 import models as clb_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common import credential
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.exception.tce_cloud_sdk_exception import TceCloudSDKException
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.profile.client_profile import ClientProfile
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.common.profile.http_profile import HttpProfile
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.csp.v20200107 import csp_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.csp.v20200107 import models as csp_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.cvm.v20170312 import cvm_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.cvm.v20170312 import models as cvm_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.dcdb.v20180411 import dcdb_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.dcdb.v20180411 import models as dcdb_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.mariadb.v20170312 import mariadb_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.mariadb.v20170312 import models as mariadb_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.mongodb.v20190725 import models as mongodb_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.mongodb.v20190725 import mongodb_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.monitor.v20170312 import models as monitor_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.monitor.v20170312 import monitor_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.monitor.v20180724 import models as alarm_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.monitor.v20180724 import monitor_client as alarm_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.redis.v20180412 import models as redis_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.redis.v20180412 import redis_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.tcr.v20190924 import models as tcr_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.tcr.v20190924 import tcr_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.tke.v20180525 import models as tke_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.tke.v20180525 import tke_client
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.vpc.v20170312 import models as vpc_models
+from monitor.cmp.cloud_apis.resource_apis.tcecloud.vpc.v20170312 import vpc_client
+from monitor.cmp.cloud_apis.resource_apis.utils import handle_time_str
+from monitor.cmp.utils import convert_param_to_list, get_compute_price_module, get_storage_pricemodule
 
 logger = logging.getLogger("root")
 

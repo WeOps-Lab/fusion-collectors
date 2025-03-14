@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.tdsql.tdsql_constant import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.tdsql.tdsql_constant import (
     TDSQLInstanceStatus,
     TDSQLReadStatus,
     TDSQLStatus,

@@ -7,12 +7,12 @@ import typing
 
 import requests
 
-from stargazer.monitor.cmp.cloud_apis.base import PrivateCloudManage
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import VM, BusinessRegion, DataStore, HostMachine
+from monitor.cmp.cloud_apis.base import PrivateCloudManage
+from monitor.cmp.cloud_apis.cloud_object.base import VM, BusinessRegion, DataStore, HostMachine
 
-# from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType, SnapshotStatus, VMStatusType, VolumeStatus,
+# from monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType, SnapshotStatus, VMStatusType, VolumeStatus,
 # VPCStatus
-# from stargazer.monitor.cmp.cloud_apis.resource_apis.constant import (
+# from monitor.cmp.cloud_apis.resource_apis.constant import (
 #     FCDiskStatus,
 #     FCSnapshotStatus,
 #     FCVMStatus,
@@ -20,10 +20,10 @@ from stargazer.monitor.cmp.cloud_apis.cloud_object.base import VM, BusinessRegio
 #     MANAGEONESiteStatus,
 #     MANAGEONESnapshotType,
 # )
-# from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import check_required_params, fail, set_optional_params
-# from stargazer.monitor.cmp.models import AccountConfig
-# from stargazer.monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType
-# from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import fail
+# from monitor.cmp.cloud_apis.resource_apis.utils import check_required_params, fail, set_optional_params
+# from monitor.cmp.models import AccountConfig
+# from monitor.cmp.cloud_apis.constant import CloudResourceType, CloudType
+# from monitor.cmp.cloud_apis.resource_apis.utils import fail
 
 logger = logging.getLogger("root")
 

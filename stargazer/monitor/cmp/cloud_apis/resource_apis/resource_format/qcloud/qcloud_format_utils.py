@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """腾讯云源资源数据和本地数据枚举映射转换"""
-from stargazer.monitor.cmp.cloud_apis.cloud_constant import (
+from monitor.cmp.cloud_apis.cloud_constant import (
     BucketType,
     DiskCategory,
     DiskChargeType,
@@ -18,7 +18,7 @@ from stargazer.monitor.cmp.cloud_apis.cloud_constant import (
     VMStatus,
     VPCStatus,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_constant import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_constant import (
     QCloudBucketType,
     QCloudChargeType,
     QCloudDiskCategory,

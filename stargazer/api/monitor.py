@@ -1,14 +1,14 @@
 import datetime
 
-from stargazer.core.config import YamlConfig
-from stargazer.monitor.cmp.driver import CMPDriver
-from stargazer.monitor.utils import convert_to_influxdb
+from core.config import YamlConfig
+from monitor.cmp.driver import CMPDriver
+from monitor.utils import convert_to_influxdb
 
 from sanic import Blueprint
 from sanic.log import logger
 from sanic import response
 
-from stargazer.plugins.vmware_info import VmwareManage
+from plugins.vmware_info import VmwareManage
 
 yml_config = YamlConfig(path="./config.yml")
 

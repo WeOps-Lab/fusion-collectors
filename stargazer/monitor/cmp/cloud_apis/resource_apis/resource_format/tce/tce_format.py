@@ -3,7 +3,7 @@
 import json
 import threading
 
-from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
+from monitor.cmp.cloud_apis.cloud_object.base import (
     BMS,
     TDSQL,
     TKE,
@@ -26,19 +26,19 @@ from stargazer.monitor.cmp.cloud_apis.cloud_object.base import (
     Zone,
     ZoneInstanceConfig,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_format import QCloudResourceFormat
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_format_utils import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_format import QCloudResourceFormat
+from monitor.cmp.cloud_apis.resource_apis.resource_format.qcloud.qcloud_format_utils import (
     format_qcloud_restrict_state,
     format_qcloud_tag,
     format_qcloud_vm_status,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.resource_format.tce.tce_format_utils import (
+from monitor.cmp.cloud_apis.resource_apis.resource_format.tce.tce_format_utils import (
     format_ckafka_tags,
     format_tce_k8s_tag,
     format_tce_shared_detail,
     format_tce_vm_charge_type,
 )
-from stargazer.monitor.cmp.cloud_apis.resource_apis.utils import handle_time_str
+from monitor.cmp.cloud_apis.resource_apis.utils import handle_time_str
 
 
 class TCEResourceFormat(QCloudResourceFormat):
