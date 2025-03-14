@@ -63,7 +63,7 @@ async def vmware_metrics(request):
         if object_id == "vmware_vc":
             continue
         for object_info in object_list:
-            resource_id = object_info["inst_name"]
+            resource_id = object_info["resource_id"]
             data = driver.get_weops_monitor_data(
                 resourceId=resource_id,
                 StartTime=start_time_str,
