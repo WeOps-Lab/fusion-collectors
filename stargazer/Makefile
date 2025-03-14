@@ -10,7 +10,7 @@ setup:
 
 
 install:
-	./.venv/bin/pip-compile ./requirements/requirements-core.txt ./requirements/requirements-extra.txt ./requirements/requirements-monitor.txt -v --output-file ./requirements.txt
+	./.venv/bin/pip-compile ./requirements/requirements-core.txt ./requirements/requirements-extra.txt ./requirements/requirements-monitor.txt ./requirements/requirements-collect.txt -v --output-file ./requirements.txt
 	./.venv/bin/pip-sync -v
 
 install-hook:

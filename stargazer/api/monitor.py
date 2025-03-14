@@ -8,6 +8,8 @@ from sanic import Blueprint
 from sanic.log import logger
 from sanic import response
 
+from stargazer.plugins.vmware_info import VmwareManage
+
 yml_config = YamlConfig(path="./config.yml")
 
 monitor_router = Blueprint("monitor", url_prefix="/monitor")
@@ -27,7 +29,7 @@ def get_config(monitor_type: str, monitor_instance: str):
 
 
 @monitor_router.get("/vmware/metrics")
-async def metrics(request):
+async def vmware_metrics(request):
 
     resource_id = request.args.get("resource_id")
     username = request.args.get("username")
@@ -50,15 +52,28 @@ async def metrics(request):
     start_time_str = start_time.strftime("%Y-%m-%d %H:%M") + ":00"
     end_time_str = end_time.strftime("%Y-%m-%d %H:%M") + ":00"
 
-    data = driver.get_weops_monitor_data(
-        resourceId=resource_id,
-        StartTime=start_time_str,
-        EndTime=end_time_str,
-        Period=300,
-        Metrics=[],
-        context={"resources": [{"bk_obj_id": "vmware_vm"}]}
-    )
-    influxdb_data = convert_to_influxdb(data)
+    object_map = VmwareManage(params=dict(
+        username=username or config["username"],
+        password=password or config["password"],
+        host=host or config["host"],
+    )).service()
+
+    metric_list = []
+    for object_id, object_list in object_map.items():
+        for object_info in object_list:
+            resource_id = object_info["inst_name"]
+            data = driver.get_weops_monitor_data(
+                resourceId=resource_id,
+                StartTime=start_time_str,
+                EndTime=end_time_str,
+                Period=300,
+                Metrics=[],
+                context={"resources": [{"bk_obj_id": object_id}]}
+            )
+            item = convert_to_influxdb(data)
+            metric_list.append(item)
+
+    influxdb_data = "\n".join(metric_list)
     logger.info("Metrics data generated....")
 
     return response.raw(influxdb_data, content_type='text/plain; version=0.0.4; charset=utf-8')
