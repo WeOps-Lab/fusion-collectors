@@ -71,7 +71,7 @@ async def vmware_metrics(request):
                 context={"resources": [{"bk_obj_id": object_id}]}
             )
             item = convert_to_influxdb(data)
-            metric_list.append(item)
+            metric_list.extend(item)
 
     influxdb_data = "\n".join(metric_list)
     logger.info("Metrics data generated....")
