@@ -31,20 +31,20 @@ def get_config(monitor_type: str, monitor_instance: str):
 @monitor_router.get("/vmware/metrics")
 async def vmware_metrics(request):
 
-    resource_id = request.args.get("resource_id")
     username = request.args.get("username")
     password = request.args.get("password")
     host = request.args.get("host")
     minutes = request.args.get("minutes", 5)
-    if not resource_id:
-        return response.json({"error": "resource_id are required"}, status=400)
-    config = get_config("vmware", resource_id)
+    # resource_id = request.args.get("resource_id")
+    # if not resource_id:
+    #     return response.json({"error": "resource_id are required"}, status=400)
+    # config = get_config("vmware", resource_id)
 
     driver = CMPDriver(
-        username or config["username"],
-        password or config["password"],
+        username,
+        password,
         "vmware",
-        host= host or config["host"],
+        host= host,
     )
 
     end_time = datetime.datetime.now()
@@ -53,13 +53,15 @@ async def vmware_metrics(request):
     end_time_str = end_time.strftime("%Y-%m-%d %H:%M") + ":00"
 
     object_map = VmwareManage(params=dict(
-        username=username or config["username"],
-        password=password or config["password"],
-        hostname=host or config["host"],
+        username=username,
+        password=password,
+        hostname=host,
     )).service()
 
     metric_list = []
     for object_id, object_list in object_map.items():
+        if object_id == "vmware_vc":
+            continue
         for object_info in object_list:
             resource_id = object_info["inst_name"]
             data = driver.get_weops_monitor_data(
@@ -70,6 +72,9 @@ async def vmware_metrics(request):
                 Metrics=[],
                 context={"resources": [{"bk_obj_id": object_id}]}
             )
+            if not data["result"]:
+                logger.error(f"resource_id: {resource_id}, message: {data.get('message')}")
+                continue
             item = convert_to_influxdb(data)
             metric_list.extend(item)
 
