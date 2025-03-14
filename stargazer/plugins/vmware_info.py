@@ -202,7 +202,7 @@ class VmwareManage(object):
                             "url": datastore.summary.url,
                             "inst_name": datastore.summary.name,
                             "system_type": datastore.summary.type,
-                            "storage_gb": datastore.summary.capacity // 1024 // 1024 // 1024,
+                            "storage": datastore.summary.capacity // 1024 // 1024 // 1024,
                             "vmware_esxi": ",".join(host.key._moId for host in datastore.summary.datastore.host),
                         }
                     )
