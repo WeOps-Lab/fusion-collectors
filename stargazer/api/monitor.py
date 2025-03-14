@@ -70,6 +70,9 @@ async def vmware_metrics(request):
                 Metrics=[],
                 context={"resources": [{"bk_obj_id": object_id}]}
             )
+            if not data["result"]:
+                logger.error(f"resource_id: {resource_id}, message: {data.get('message')}")
+                continue
             item = convert_to_influxdb(data)
             metric_list.extend(item)
 
