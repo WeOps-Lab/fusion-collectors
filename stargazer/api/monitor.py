@@ -55,7 +55,7 @@ async def vmware_metrics(request):
     object_map = VmwareManage(params=dict(
         username=username or config["username"],
         password=password or config["password"],
-        host=host or config["host"],
+        hostname=host or config["host"],
     )).service()
 
     metric_list = []
