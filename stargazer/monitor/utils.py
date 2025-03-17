@@ -34,10 +34,16 @@ def convert_to_influxdb(data):
 def convert_to_prometheus(data):
     """数据格式转换为 Prometheus"""
     prometheus_data = []
+    help_type_map = {}  # 存储每个指标的 HELP 和 TYPE 避免重复
 
     # 遍历所有 resource_id
-    for resource_id, metrics in data["data"].items():
+    for resource_id, metrics in data.items():
         for metric_name, metric_data in metrics.items():
+            # 确保 HELP 和 TYPE 只定义一次
+            if metric_name not in help_type_map:
+                prometheus_data.append(f"# HELP {metric_name} Auto-generated help for {metric_name}")
+                prometheus_data.append(f"# TYPE {metric_name} gauge")  # 默认使用 gauge
+                help_type_map[metric_name] = True
 
             if isinstance(metric_data, dict) and "dims" in metric_data and "values" in metric_data:
                 # **有维度的指标**

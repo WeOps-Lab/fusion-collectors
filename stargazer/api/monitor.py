@@ -58,7 +58,7 @@ async def vmware_metrics(request):
         hostname=host,
     )).service()
 
-    metric_list = []
+    metric_dict = {}
     for object_id, object_list in object_map.items():
         if object_id == "vmware_vc":
             continue
@@ -75,10 +75,11 @@ async def vmware_metrics(request):
             if not data["result"]:
                 logger.error(f"resource_id: {resource_id}, message: {data.get('message')}")
                 continue
-            item = convert_to_prometheus(data)
-            metric_list.extend(item)
+            for resource_id, metrics in data["data"].items():
+                metric_dict[resource_id] = metrics
+    metric_list = convert_to_prometheus(metric_dict)
 
-    influxdb_data = "\n".join(metric_list)
+    influxdb_data = "\n".join(metric_list) + "\n"
     logger.info("Metrics data generated....")
 
     return response.raw(influxdb_data, content_type='text/plain; version=0.0.4; charset=utf-8')
