@@ -29,3 +29,35 @@ def convert_to_influxdb(data):
                     influxdb_data.append(influxdb_line)
 
     return influxdb_data
+
+
+def convert_to_prometheus(data):
+    """数据格式转换为 Prometheus"""
+    prometheus_data = []
+
+    # 遍历所有 resource_id
+    for resource_id, metrics in data["data"].items():
+        for metric_name, metric_data in metrics.items():
+
+            if isinstance(metric_data, dict) and "dims" in metric_data and "values" in metric_data:
+                # **有维度的指标**
+                dims = metric_data['dims']  # 维度列表
+                values = metric_data['values']  # 时间序列数据
+
+                # 构建 Prometheus 标签字符串
+                label_str = f'resource_id="{resource_id}"'
+                for dim_key, dim_value in dims:
+                    label_str += f', {dim_key}="{dim_value}"'
+
+                # 遍历时间序列数据，构造 Prometheus 格式
+                for timestamp, value in values:
+                    prometheus_line = f'{metric_name}{{{label_str}}} {value} {timestamp}'
+                    prometheus_data.append(prometheus_line)
+
+            elif isinstance(metric_data, list):
+                # **无维度的指标**
+                for timestamp, value in metric_data:
+                    prometheus_line = f'{metric_name}{{resource_id="{resource_id}"}} {value} {timestamp}'
+                    prometheus_data.append(prometheus_line)
+
+    return prometheus_data

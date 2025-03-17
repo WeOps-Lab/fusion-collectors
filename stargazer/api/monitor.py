@@ -2,7 +2,7 @@ import datetime
 
 from core.config import YamlConfig
 from monitor.cmp.driver import CMPDriver
-from monitor.utils import convert_to_influxdb
+from monitor.utils import convert_to_prometheus
 
 from sanic import Blueprint
 from sanic.log import logger
@@ -75,7 +75,7 @@ async def vmware_metrics(request):
             if not data["result"]:
                 logger.error(f"resource_id: {resource_id}, message: {data.get('message')}")
                 continue
-            item = convert_to_influxdb(data)
+            item = convert_to_prometheus(data)
             metric_list.extend(item)
 
     influxdb_data = "\n".join(metric_list)
