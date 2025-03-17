@@ -269,15 +269,3 @@ class VmwareManage(object):
                 lines.append(format_line(metric, tags, label))
 
         return "\n".join(lines)
-
-
-if __name__ == '__main__':
-    params = {
-        # "hostname": "10.10.16.254",
-        # "username": "weops-monitor@vsphere.local",
-        # "password": "cWweops-monitor@2022",
-        # "port": 443,
-        # "ssl": False,
-    }
-    vm_manage = VmwareManage(params=params)
-    result = vm_manage.list_all_resources()
