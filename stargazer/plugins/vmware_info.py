@@ -125,7 +125,7 @@ class VmwareManage(object):
                     "inst_name": vm.name,
                     "ip_addr": "",
                     "vmware_esxi": "",
-                    "vmware_ds": [],
+                    "vmware_ds": "",
                     "cluster": "",
                     "os_name": "",
                     "vcpus": "",
@@ -161,9 +161,7 @@ class VmwareManage(object):
                     if isinstance(vm.summary.runtime.host.parent, vim.ClusterComputeResource):
                         vm_dict["cluster"] = vm.summary.runtime.host.parent.name
 
-                for datastore in vm.datastore:
-                    vm_dict["vmware_ds"].append(datastore._moId)
-
+                vm_dict["vmware_ds"] = ",".join(datastore._moId for datastore in vm.datastore)
                 vm_dict["vcpus"] = vm.summary.config.numCpu
                 vm_dict["os_name"] = vm.summary.config.guestFullName
                 vm_dict["memory"] = vm.summary.config.memorySizeMB
@@ -243,29 +241,46 @@ class VmwareManage(object):
         except:
             pass
 
-        lines = self.convert_to_influxdb_format(result)
+        lines = self.convert_to_prometheus_format(result)
         return lines
 
     @staticmethod
-    def convert_to_influxdb_format(data):
+    def convert_to_prometheus_format(data):
+        """
+        将VMware信息转换为Prometheus兼容的文本格式
+
+        格式: metric_name{label1="value1",label2="value2"} value [timestamp]
+
+        提示：timestamp使用Unix时间（秒级）
+        """
         lines = []
-        timestamp = int(time.time() * 1e9)  # 当前时间戳，单位为纳秒
+        timestamp = int(time.time())  # 使用秒级时间戳
 
-        def format_value(value):
+        def escape_value(value):
+            """转义Prometheus标签值中的特殊字符，同时将非字符串转换为字符串"""
             if isinstance(value, str):
-                return f'"{value}"'
-            return value
+                return value.replace('\\', '\\\\').replace('"', '\\"').replace('\n', '\\n')
+            return str(value)
 
-        def format_line(measurement, tags, fields):
-            tag_str = ",".join([f"{k}={v}" for k, v in tags.items()])
-            field_str = ",".join([f"{k}={format_value(v)}" for k, v in fields.items()])
-            return f"{measurement},{tag_str} {field_str} {timestamp}"
+        for model_id, items in data.items():
+            base_metric_name = f"{model_id}_info"
+            for item in items:
+                # 仅保留简单类型（非列表、非字典）的数据作为标签
+                labels = {}
+                for key, value in item.items():
+                    if isinstance(value, (dict, list)) or value is None:
+                        continue
+                    # 若为字符串但为空，则跳过
+                    if isinstance(value, str) and value == "":
+                        continue
+                    labels[key] = escape_value(value)
+                # 添加模型ID标签
+                labels["model_id"] = model_id
 
-        for model_id, labels in data.items():
-            for label in labels:
-                label["model_id"] = model_id
-                metric = f"{model_id}_info"
-                tags = {"inst_name": label.pop("inst_name")}
-                lines.append(format_line(metric, tags, label))
+                # 按键排序且不加额外空格
+                label_parts = [f'{k}="{v}"' for k, v in sorted(labels.items())]
+                label_str = ",".join(label_parts)
+                # 输出基本指标行，值固定为1
+                lines.append(f'{base_metric_name}{{{label_str}}} 1 {timestamp}')
 
         return "\n".join(lines)
