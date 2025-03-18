@@ -90,7 +90,8 @@ class VmwareManage(object):
                     {
                         "instance_id": self.vc_name,
                         "ip_addr": ip_addr,
-                        "inst_name": host.name,
+                        # "inst_name": host.name,
+                        "inst_name": f"{host.name}[{host._moId}]",
                         "resource_id": host._moId,
                         "memory": memory_total,
                         "cpu_model": host.summary.hardware.cpuModel,
@@ -125,7 +126,7 @@ class VmwareManage(object):
                 vm_dict = {
                     "instance_id": self.vc_name,
                     "resource_id": vm._moId,
-                    "inst_name": vm.name,
+                    "inst_name": f"{vm.name}[{vm._moId}]",
                     "ip_addr": "",
                     "vmware_esxi": "",
                     "vmware_ds": "",
@@ -202,7 +203,8 @@ class VmwareManage(object):
                             "instance_id": self.vc_name,
                             "resource_id": datastore._moId,
                             "url": datastore.summary.url,
-                            "inst_name": datastore.summary.name,
+                            # "inst_name": datastore.summary.name,
+                            "inst_name": f"{datastore.summary.name}[{datastore._moId}]",
                             "system_type": datastore.summary.type,
                             "storage": datastore.summary.capacity // 1024 // 1024 // 1024,
                             "vmware_esxi": ",".join(host.key._moId for host in datastore.summary.datastore.host),
