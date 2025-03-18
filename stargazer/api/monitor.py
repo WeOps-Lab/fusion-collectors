@@ -70,7 +70,8 @@ async def vmware_metrics(request):
                 EndTime=end_time_str,
                 Period=300,
                 Metrics=[],
-                context={"resources": [{"bk_obj_id": object_id}]}
+                context={"resources": [{"bk_obj_id": object_id}]},
+                utc=True,
             )
             if not data["result"]:
                 logger.error(f"resource_id: {resource_id}, message: {data.get('message')}")
