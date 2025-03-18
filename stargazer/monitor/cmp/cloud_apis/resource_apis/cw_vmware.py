@@ -2318,6 +2318,8 @@ class Vmware(PrivateCloudManage):
         now_time = datetime.datetime.now() + datetime.timedelta(minutes=-5)
         hour_time = datetime.datetime.now() + datetime.timedelta(hours=-1)
         data = {"StartTime": str(kwargs.get("StartTime", hour_time)), "EndTime": str(kwargs.get("EndTime", now_time))}
+        # 是否使用 UTC 时间
+        utc = kwargs.get("utc", False)
         resource_id_list = kwargs["resourceId"]
         if isinstance(resource_id_list, str):
             resource_id_list = resource_id_list.split(",")
@@ -2430,16 +2432,30 @@ class Vmware(PrivateCloudManage):
                         if n.value:
                             for k, i in enumerate(n.sampleInfo):
                                 time_datetime = i.timestamp
-                                time_cn = time_datetime + datetime.timedelta(hours=8)
-                                timestamp = int(time.mktime(time_cn.timetuple()))
-                                rate = n.value[0].value[k]
-                                if metric in ["cpu_usage_average", "mem_usage_average", "disk_io_usage"]:
-                                    rate = n.value[0].value[k] / 100
-                                if metric in ["mem_consumed_average"]:
-                                    rate = n.value[0].value[k] / 1024
-                                res.setdefault(vm_name, {}).setdefault(metric, []).append(
-                                    [timestamp * 1000, round(float(rate), 3)]
-                                )
+                                if not utc:
+                                    time_datetime = time_datetime + datetime.timedelta(hours=8)
+                                timestamp = int(time.mktime(time_datetime.timetuple()))
+                                # 补充维度能力
+                                no_dims = len(n.value) == 1
+                                for i in n.value:
+                                    dims = None
+                                    if not no_dims:
+                                        instance = i.id.instance or n.entity.name
+                                        dims = (("instance", instance),)
+                                    rate = i.value[k]
+                                    if metric in ["cpu_usage_average", "mem_usage_average", "disk_io_usage"]:
+                                        rate = i.value[k] / 100
+                                    if metric in ["mem_consumed_average"]:
+                                        rate = i.value[k] / 1024
+                                    _value = round(float(rate), 3)
+                                    if not dims:
+                                        res.setdefault(vm_name, {}).setdefault(metric, []).append(
+                                            [timestamp * 1000, _value]
+                                        )
+                                    else:
+                                        res.setdefault(vm_name, {}).setdefault(metric, {}).setdefault(dims, []).append(
+                                            [timestamp * 1000, _value]
+                                        )
 
             return {"result": True, "data": res}
 
