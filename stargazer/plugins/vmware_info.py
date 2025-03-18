@@ -21,6 +21,7 @@ class VmwareManage(object):
         self.ssl = params.get("ssl", "false") == "true"
         self.si = self.connect_vc()
         self.content = self.si.RetrieveContent()
+        self.vc_name = self.content.about.name
 
     def test_connection(self):
         """
@@ -87,6 +88,7 @@ class VmwareManage(object):
 
                 result.append(
                     {
+                        "instance_id": self.vc_name,
                         "ip_addr": ip_addr,
                         "inst_name": host.name,
                         "resource_id": host._moId,
@@ -121,6 +123,7 @@ class VmwareManage(object):
                     continue
 
                 vm_dict = {
+                    "instance_id": self.vc_name,
                     "resource_id": vm._moId,
                     "inst_name": vm.name,
                     "ip_addr": "",
@@ -196,6 +199,7 @@ class VmwareManage(object):
                 for datastore in datacenter.datastore:
                     datastore_list.append(
                         {
+                            "instance_id": self.vc_name,
                             "resource_id": datastore._moId,
                             "url": datastore.summary.url,
                             "inst_name": datastore.summary.name,
@@ -211,14 +215,13 @@ class VmwareManage(object):
         return datacenters_list, datastore_list
 
     def service(self):
-        vc_name = self.content.about.name
         vc_version = self.content.about.version
         datacenters, datastore = self.get_datacenters_and_datastore()
         vm_list = self.get_vms()
         esxi = self.get_hosts()
 
         result = {
-            "vmware_vc": [{"vc_version": vc_version, "inst_name": vc_name}],
+            "vmware_vc": [{"vc_version": vc_version, "inst_name": self.vc_name, "instance_id": self.vc_name}],
             "vmware_ds": datastore,
             "vmware_vm": vm_list,
             "vmware_esxi": esxi,
@@ -281,6 +284,7 @@ class VmwareManage(object):
                     for k, v in item.items()
                     if not isinstance(v, (list, dict)) and v is not None
                 }
+                labels['model_id'] = model_id
                 # 按键排序生成标签字符串
                 label_str = ",".join(f'{k}="{v}"' for k, v in sorted(labels.items()))
                 # 生成info指标，值固定为1，包含所有维度
