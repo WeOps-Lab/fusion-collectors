@@ -249,12 +249,19 @@ class VmwareManage(object):
         """
         将VMware信息转换为Prometheus兼容的文本格式
 
-        格式: metric_name{label1="value1",label2="value2"} value [timestamp]
-
-        提示：timestamp使用Unix时间（秒级）
+        输出格式示例：
+        # HELP vmware_vc_info Auto-generated help for vmware_vc_info
+        # TYPE vmware_vc_info gauge
+        vmware_vc_info{inst_name="VMware vCenter Server",vc_version="7.0.3"} 1 1742267662301
+        # HELP vmware_ds_info Auto-generated help for vmware_ds_info
+        # TYPE vmware_ds_info gauge
+        vmware_ds_info{inst_name="datastore1-16.16",resource_id="datastore-1646",storage="2505",system_type="VMFS",
+        url="ds:///vmfs/volumes/6385b001-37c96502-d73f-509a4c67b4c3/",vmware_esxi="host-1645"} 1 1742267662301
+        ...
+        注意：时间戳为13位毫秒级，最后以换行符结尾
         """
-        lines = []
-        timestamp = int(time.time())  # 使用秒级时间戳
+        # 生成毫秒级时间戳
+        timestamp = int(time.time() * 1000)
 
         def escape_value(value):
             """转义Prometheus标签值中的特殊字符，同时将非字符串转换为字符串"""
@@ -262,25 +269,30 @@ class VmwareManage(object):
                 return value.replace('\\', '\\\\').replace('"', '\\"').replace('\n', '\\n')
             return str(value)
 
+        # 用于存放所有指标，结构为{metric_name: [line, line, ...]}
+        metrics = {}
+
+        # 遍历每个模型，例如：vmware_vc、vmware_ds、vmware_vm、vmware_esxi
         for model_id, items in data.items():
-            base_metric_name = f"{model_id}_info"
             for item in items:
-                # 仅保留简单类型（非列表、非字典）的数据作为标签
-                labels = {}
-                for key, value in item.items():
-                    if isinstance(value, (dict, list)) or value is None:
-                        continue
-                    # 若为字符串但为空，则跳过
-                    if isinstance(value, str) and value == "":
-                        continue
-                    labels[key] = escape_value(value)
-                # 添加模型ID标签
-                labels["model_id"] = model_id
+                # 构造标签字典：过滤掉列表和字典类型，并且值不为None
+                labels = {
+                    k: escape_value(v)
+                    for k, v in item.items()
+                    if not isinstance(v, (list, dict)) and v is not None
+                }
+                # 按键排序生成标签字符串
+                label_str = ",".join(f'{k}="{v}"' for k, v in sorted(labels.items()))
+                # 生成info指标，值固定为1，包含所有维度
+                info_metric = f"{model_id}_info"
+                info_line = f'{info_metric}{{{label_str}}} 1 {timestamp}'
+                metrics.setdefault(info_metric, []).append(info_line)
 
-                # 按键排序且不加额外空格
-                label_parts = [f'{k}="{v}"' for k, v in sorted(labels.items())]
-                label_str = ",".join(label_parts)
-                # 输出基本指标行，值固定为1
-                lines.append(f'{base_metric_name}{{{label_str}}} 1 {timestamp}')
-
-        return "\n".join(lines)
+        # 生成输出文本：每个指标输出一次 HELP 和 TYPE 信息，然后输出所有指标行
+        output_lines = []
+        for metric_name, lines in metrics.items():
+            output_lines.append(f"# HELP {metric_name} Auto-generated help for {metric_name}")
+            output_lines.append(f"# TYPE {metric_name} gauge")
+            output_lines.extend(lines)
+        # 确保最后以换行符结尾
+        return "\n".join(output_lines) + "\n"
