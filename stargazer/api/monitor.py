@@ -77,7 +77,8 @@ async def vmware_metrics(request):
                 logger.error(f"resource_id: {resource_id}, message: {data.get('message')}")
                 continue
             for resource_id, metrics in data["data"].items():
-                metric_dict[resource_id] = metrics
+
+                metric_dict[(resource_id, object_id)] = metrics
     metric_list = convert_to_prometheus(metric_dict)
 
     influxdb_data = "\n".join(metric_list) + "\n"
